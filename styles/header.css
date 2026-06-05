@@ -1,0 +1,28 @@
+.cabecalho {
+    background-color: #060604;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    padding:  1% 0% 1% 0%;
+    color: #FFFADD;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+}
+
+@media (max-width: 600px) {
+    .cabecalho {
+    font-size: 14px;
+    flex-direction: column;
+    padding: 1rem;
+  } 
+} 
+
+@media (max-width: 430px){
+  .cabecalho {
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 2% 6% 2% 0%;
+  } 
+
+}

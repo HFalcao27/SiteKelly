@@ -1,0 +1,43 @@
+.div__cadastro{
+    display: flex;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #899AA1;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 5px;
+}
+
+.div__cadastro__paragraph{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: center;
+    color: #899AA1;
+    margin: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.div__cadastro__buttoes{
+    display: flex;
+    flex-direction: row;
+    padding: 2px;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.div__cadastro__buttoes a{
+    text-decoration: none; /*Para retirar a linha de baixo*/
+}
+
+.login_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    cursor: pointer;
+    padding: 8px;
+    margin:15px;
+    border-radius: 5px;
+}

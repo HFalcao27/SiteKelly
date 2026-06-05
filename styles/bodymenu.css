@@ -1,0 +1,130 @@
+.container__Menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0vh 0vh 1vh 0vh;
+}
+
+.container__Menu__logo{
+    max-height: 15vh;
+    padding: 0% 1% 0% 0%;
+}
+
+.container__Menu__search {
+    color: #030e13;
+    border-radius: 5px;
+    border: none;
+    background-color: #c8d4da;
+    width: 30vh;
+    padding: 0.9vh 14vh 0.9vh 2vh;
+}
+
+.container__Menu__Link{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: none;
+    color: #899AA1;
+    padding: 0% 1% 0% 1%;
+}
+
+.container__Menu__lupa {
+    position: flex;
+    top: 50%;
+    right: 670px; 
+    transform: translateY(-986%);
+    cursor: pointer;
+}
+
+.container__Menu__lupa img {
+    width: 3vh;
+    height: 3vh;
+    }
+
+.container__Menu__Link__sacola{
+    max-height:6vh;
+}
+
+.container__Procura{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    color: #899AA1;
+    font-size: 20px;
+    padding: 0% 0% 0% 14%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    
+}
+
+.container__Procura__text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0% 11% 0% 0%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 800;
+    color: #899AA1;
+    font-size: 3,7vh;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .container__Menu{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 4% 0 4%;
+    gap: 0.1rem;
+    font-size: 2vh;
+  }
+    .container__Menu__search {
+    width: 50%;
+    margin: 0 0% ;
+  }
+
+  .container__Menu__lupa{
+    display: none;
+  }
+
+  .container__Procura{
+    margin: -3% 0% -1% 1%;
+  }
+
+}
+
+@media (max-width: 430px){
+
+    .container__Menu{
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0% 0 0%;
+    font-size: 1.9vh;
+    background-color: #f4fcff;
+
+    }
+
+    .container__Menu__lupa{
+    display: none;
+    }
+
+    .container__Menu__logo{
+    max-height: 6.2vh;
+    padding: 0% 0% 0% 0%;
+    }   
+
+    .container__Menu__search {
+    width: 30%;
+    }
+
+    .container__Procura{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1% 10% 0 10%;
+    font-size: 15px;
+    }
+}

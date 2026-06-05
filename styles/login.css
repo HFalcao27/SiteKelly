@@ -1,0 +1,9 @@
+.div__login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: center;
+    color: #899AA1;
+    margin: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
