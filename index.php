@@ -17,7 +17,10 @@
 </head>
 
 <header class="cabecalho">
-    <a>Frete Grátis a partir de R$350,00</a>
+    <div class="cabecalho_frases">
+    <!--<a>Frete Grátis a partir de R$350,00</a>-->
+    <span id="frases">Frete Grátis a partir de R$350,00</span>
+    </div>
 </header>
 
 <body>
@@ -29,8 +32,10 @@
             <img src="assets/lupa.png" alt="ícone de buscar">
         </button>
     </div>
-        <a class="container__Menu__Link" href="login.html">Entre ou cadastre-se</a>
-        <img class="container__Menu__Link__sacola" src="./assets/sacola de compras.png"></a>  
+        <a class="container__Menu__Link" href="login.php">Entre ou cadastre-se</a>
+        <img  href="" class="container__Menu__Link__sacola" src="./assets/sacola de compras.png"></a>
+        <a href="backend/logout.php" >
+        <img class="container__botaologout" src="./assets/logout.png" alt="icone de logout"></a>
     </div>
     <div class="container__Procura">
         <a class="container__Procura__text" href="#destaques">Destaques</a>
@@ -200,7 +205,7 @@
     </section>   
 </body>
 
-<script src="./script.js"></script>
+<script src="js/scriptindex.js"></script>
 
 <footer class="rodape">
     <section class="rodape__grid">
@@ -230,19 +235,19 @@
 </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-                <script>
-                    const swiper = new Swiper('.swiper', { 
-                                spaceBetween: 2,
-                                slidesPerView: 4,
-                                pagination: {
-                                    el: '.swiper-pagination',
-                                    type: 'bullets',
-                                },
-                                navigation: {
-                                    nextEl: '.swiper-button-next',
-                                    prevEl: '.swiper-button-prev',
-                                },
-                });
-                </script>
+        <script>
+            const swiper = new Swiper('.swiper', { 
+                        spaceBetween: 2,
+                        slidesPerView: 4,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            type: 'bullets',
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+        });
+        </script>
 
 </html>

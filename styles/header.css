@@ -8,6 +8,16 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
 }
 
+.cabecalho_frases{
+    display: inline-block;
+    white-space: nowrap;
+    animation: cabecalho_frases 5s linear infinite;
+}
+
+#frases{ /*é USADO NO JAVASCRIPT*/
+    transition: opacity 0.3s ease;
+}
+
 @media (max-width: 600px) {
     .cabecalho {
     font-size: 14px;

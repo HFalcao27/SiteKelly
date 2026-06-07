@@ -20,6 +20,20 @@
     padding: 0.9vh 14vh 0.9vh 2vh;
 }
 
+.container__botaologout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: center;
+    filter: brightness(0.5) saturate(0.2) hue-rotate(175deg);
+    max-width: 30px;
+    width:100%;
+    height: auto;
+    padding-top: 3px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
 .container__Menu__Link{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: none;
@@ -42,6 +56,7 @@
 
 .container__Menu__Link__sacola{
     max-height:6vh;
+    cursor: pointer;
 }
 
 .container__Procura{
@@ -53,8 +68,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    display: flex;
-    
+    display: flex;  
 }
 
 .container__Procura__text{

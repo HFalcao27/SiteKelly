@@ -1,3 +1,16 @@
+<?php
+
+require_once 'backend/conexao.php';
+
+$sql = $pdo->prepare("SELECT * FROM clientes");
+
+$sql->execute();
+
+$clientes = $sql->fetchAll();
+
+?>
+
+
  <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -23,35 +36,58 @@
 <body class="">
     <div class="container__Menu">
             <img src="./assets/Logo.jpeg" class="container__Menu__logo" alt="logo">
-        <a class="container__Menu__Link" href="login.html">LOGIN</a>
-        <a class="container__Menu__Link" href="index.html">HOME</a>
+        <a class="container__Menu__Link" href="index.php">HOME</a>    
+        <a class="container__Menu__Link" href="login.php">LOGIN</a> 
     </div>
 
       <h3 class="div__cadastro__paragraph">Faça Seu Cadastro</h3>
     <div class="div__cadastro"> 
-    <form action="backend/salvarUsuario.php" method="POST">  
-                       
+
+    <form action="backend/salvarClientes.php" method="POST">  
+
         <div class="div__cadastro">
             <label class="" for="exampleInputEmail1">Nome:</label>
-            <input name="nome" type="text" id="exampleInputEmail1" aria-describedby="emailHelp">   
+            <input name="nome" type="text">   
         </div>
         <div class="div__cadastro">
             <label for="exampleInputEmail1">email: </label>
-            <input name="email" type="email" id="exampleInputEmail1" aria-describedby="emailHelp">   
+            <input name="email" type="email" placeholder="exemplo@.com">   
+        </div>
+        <div class="div__cadastro">
+            <label for="exampleInputEmail1">Data de Nascimento:</label>
+            <input name="data_de_nascimento" type="number" placeholder="00/00/0000">  
         </div>
         <div class="div__cadastro">
             <label for="exampleInputEmail1">Telefone: </label>
-            <input name="numero_telefone" type="number">  
+            <input name="telefone" type="number" placeholder="90000-0000">  
+        </div>
+        <div class="div__cadastro">
+            <label for="exampleInputEmail1">Cpf: </label>
+            <input name="cpf" type="number" placeholder="123.456.789-10">  
+        </div>
+
+        <div class="div__cadastro">
+            <label for="exampleInputEmail1">endereço: </label>
+            <input name="endereco" type="text">  
+        </div>
+
+        <div class="div__cadastro">
+            <label for="exampleInputEmail1">Cep: </label>
+            <input name="cep" type="number" placeholder="0000000-000">  
         </div>
 
         <div class="div__cadastro">
             <label for="exampleInputPassword1">Senha: </label>
-            <input name="senha" type="password" id="exampleInputPassword1">
+            <input name="senha" type="password" id="senhacadastro">
         </div>
 
         <div class="div__cadastro">
             <label for="exampleInputPassword1">Repita a Senha: </label>
-            <input type="password" id="exampleInputPassword1">
+            <input name="repita_senha" type="password" id="repitasenhacadastro">
+        </div>
+        <div>
+            <input type="checkbox" id="mostrarsenha">
+            <label for="mostrarsenha" >Mostrar Senhas</label>
         </div>
 
         <div class="div__cadastro__buttoes">
@@ -64,6 +100,7 @@
         </div>     
     </form>
     </div>
+<script src="js/script.js"></script>
 </body>
 
 </html>
