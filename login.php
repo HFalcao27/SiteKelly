@@ -3,7 +3,6 @@
 require_once 'backend/conexao.php';
 session_start();
 
-
 ?>
 
 <!DOCTYPE html>
