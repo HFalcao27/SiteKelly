@@ -1,5 +1,17 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['login_adm'])){
+
+    header('Location: login_adm.php');
+    exit;
+}
+
+?>
+
+<?php
+
 require_once '../backend/conexao.php';
 
 $id = $_GET['id'];
@@ -12,56 +24,79 @@ $produto = $sql->fetch();
 
 ?>
 
-<form method="POST" action="../backend/atualizarProduto.php">
 
-    <input type="hidden"
-           name="id_produto"
-           value="<?= $produto['id_produto']; ?>">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+       <title>Cadastrar Produto</title>
+       <meta charset="UTF-8">
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="../styles/style.css">
+</head>
 
-    <label>Nome</label>
-    <input type="text"
-           name="produto_nome"
-           value="<?= $produto['produto_nome']; ?>">
+       <body class="body_cadastrar_produto">
+              <h3 class="cadastrar_produto_paragraph">Editar Produtos</h3>
+       <form method="POST" action="../backend/atualizarProduto.php">
 
-    <br><br>
+       <input type="hidden"
+              name="id_produto"
+              value="<?= $produto['id_produto']; ?>">
 
-    <label>Valor</label>
-    <input type="number"
-           step="0.01"
-           name="produto_valor"
-           value="<?= $produto['produto_valor']; ?>">
+       <div class="cadastrar_produto_1">
+       <label>Nome:</label>
+       <input type="text"
+              name="produto_nome"
+              value="<?= $produto['produto_nome']; ?>">
 
-    <br><br>
+       <br><br>
 
-    <label>Tamanho</label>
-    <input type="text"
-           name="produto_tamanho"
-           value="<?= $produto['produto_tamanho']; ?>">
+       <label>Valor:</label>
+       <input type="number"
+              step="0.01"
+              name="produto_valor"
+              value="<?= $produto['produto_valor']; ?>">
 
-    <br><br>
+       <br><br>
+       </div>
 
-    <label>Quantidade</label>
-    <input type="number"
-           name="produto_quantidade"
-           value="<?= $produto['produto_quantidade']; ?>">
+       <div class="cadastrar_produto_1">
+       <label>Tamanho:</label>
+       <input type="text"
+              name="produto_tamanho"
+              value="<?= $produto['produto_tamanho']; ?>">
 
-    <br><br>
+       <br><br>
 
-    <label>Cor</label>
-    <input type="text"
-           name="produto_cor"
-           value="<?= $produto['produto_cor']; ?>">
+       <label>Quantidade:</label>
+       <input type="number"
+              name="produto_quantidade"
+              value="<?= $produto['produto_quantidade']; ?>">
 
-    <br><br>
+       <br><br>
+       </div>
 
-    <label>Descrição</label>
+       <div class="cadastrar_produto_1">
+       <label>Cor:</label>
+       <input type="text"
+              name="produto_cor"
+              value="<?= $produto['produto_cor']; ?>">
 
-    <textarea name="produto_descricao"><?= $produto['produto_descricao']; ?></textarea>
+       <br><br>
 
-    <br><br>
+       <label>Descrição</label>
 
-    <button type="submit">
-        Salvar Alterações
-    </button>
+       <textarea name="produto_descricao"><?= $produto['produto_descricao']; ?></textarea>
 
-</form>
+       <br><br>
+       </div>
+
+       <button class="cadastrar_produto_2"
+              type="submit">
+              Salvar Alterações
+       </button>
+
+       </form>
+       </body>
+</html>

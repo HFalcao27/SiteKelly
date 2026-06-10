@@ -1,4 +1,19 @@
- <!DOCTYPE html>
+<?php
+
+require_once './backend/conexao.php';
+
+$sql = $pdo->prepare("
+    SELECT * 
+    FROM produto
+    WHERE produto_ativo = 1
+");
+
+$sql->execute();
+
+$produtos = $sql->fetchAll();
+
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -41,6 +56,7 @@
         <a class="container__Procura__text" href="#destaques">Destaques</a>
         <a class="container__Procura__text" href="#vestidos">Vestidos</a>
         <a class="container__Procura__text" href="#conjunto">Conjunto de roupas</a>
+         <a class="container__Procura__text" href="#teste">teste banco de dados</a>
     </div>
     <section id="destaques" class="carrosel">
         <h2 class="carrosel__titulo">Destaques</h2>
@@ -82,6 +98,7 @@
                     <div class="swiper-button-next"></div>
         </div>
     </section> 
+
     <section id="vestidos" class="carrosel">
         <h2 class="carrosel__titulo">Vestidos</h2>
         <div class="swiper">
@@ -143,6 +160,7 @@
         </div>
 
     </section>
+
         <section id="conjunto" class="carrosel">
         <h2 class="carrosel__titulo">Conjuntos de Roupa</h2>
         <div class="swiper">
@@ -201,8 +219,54 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
         </div>
+    </section> 
+    
+    <section id="teste" class="carrosel">  <!--Padrão de como vai ser com o bando de dados.-->
+        <h2 class="carrosel__titulo">Produtos</h2>
 
-    </section>   
+        <div class="swiper">
+            <div class="swiper-pagination"></div>
+
+            <div class="swiper-wrapper">
+
+                <?php foreach($produtos as $produto): ?>
+
+                    <div class="swiper-slide">
+
+                        <img
+                            src="./assets/uploads_produtos/<?= $produto['produto_imagem']; ?>"
+                            alt="<?= $produto['produto_nome']; ?>">
+
+                        <span class="heart-icon">&#10084;</span>
+
+                        <p class="swiper__paragraph">
+                            <?= $produto['produto_nome']; ?>
+                        </p>
+
+                        <p class="swiper__paragraph__valor">
+                            R$ <?= number_format($produto['produto_valor'], 2, ',', '.'); ?>
+                        </p>
+
+                        <p class="swiper__paragraph__dividir">
+                            3x de R$
+                            <?= number_format($produto['produto_valor'] / 3, 2, ',', '.'); ?>
+                        </p>
+
+                        <p class="swiper__paragraph">
+                            <?= $produto['produto_descricao']; ?>
+                        </p>
+
+                    </div>
+
+                <?php endforeach; ?>
+
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        </div>
+    </section>
 </body>
 
 <script src="js/scriptindex.js"></script>

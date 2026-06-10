@@ -4,11 +4,14 @@
 @import url("./carrosel.css");
 @import url("./cadastrar.css");
 @import url("./login.css");
+@import url("./cadastrar_produto.css");
+@import url("./tabela_adm_produtos.css");
 
 *{
     margin: 0;
     padding: 0;
 }
+
 :root {
     --cor-principal: #899AA1;
     --cor-secundaria: #FBBE9A;

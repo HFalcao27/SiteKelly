@@ -33,7 +33,7 @@ $sql->execute([
     $id
 ]);
 
-header('Location: ../admin/produtos.php');
+header ('Location: ../admin/produtos.php');
 exit;
 
 ?>

@@ -14,10 +14,21 @@ $produtos = $sql->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>Produtos Cadastrados</title>
-
-    <h1>Produtos Cadastrados</h1>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
-<body>
+
+<body class="body_cadastrar_produto">
+<h1 class="cadastrar_produto_paragraph">Produtos Cadastrados</h1>
+
+<!--
+<div>
+<input type="text" class="container__Menu__search" placeholder="QUER ENCONTRAR QUAL PRODUTO?">
+<button href="cadastrar_produto.php">Cadastrar Produtos</button>
+<button></button>
+</div> -->
 
 <table border="1">
 
@@ -36,25 +47,29 @@ $produtos = $sql->fetchAll();
     <?php foreach($produtos as $produto): ?> <!--Para cada produto encontrado no banco crie uma linha da tabela-->
 
     <tr>
+    
+        <td class="tabela_produto_cadastrado"><?= $produto['id_produto']; ?></td>
+        <td class="tabela_produto_cadastrado"><?= $produto['produto_nome']; ?></td>
+        <td class="tabela_produto_cadastrado">R$ <?= $produto['produto_valor']; ?></td>
+        <td class="tabela_produto_cadastrado"><?= $produto['produto_tamanho']; ?></td>
+        <td class="tabela_produto_cadastrado"><?= $produto['produto_quantidade']; ?></td>
+
         <td>
         <img
             src="../assets/uploads_produtos/<?= $produto['produto_imagem']; ?>"
             width="80">
         </td>
-        <td><?= $produto['id_produto']; ?></td>
-        <td><?= $produto['produto_nome']; ?></td>
-        <td>R$ <?= $produto['produto_valor']; ?></td>
-        <td><?= $produto['produto_tamanho']; ?></td>
-        <td><?= $produto['produto_quantidade']; ?></td>
         <td>
-        <a href="excluir_produto.php?id=<?= $produto['id_produto']; ?>">
+        <a class="tabela_butao_exclui" href="excluir_produto.php?id=<?= $produto['id_produto']; ?>">
             Excluir
         </a>
+        </td>
         <td>
-        <a href="editar_produto.php?id=<?= $produto['id_produto']; ?>">
+        <a class="tabela_butao_editar" href="editar_produto.php?id=<?= $produto['id_produto']; ?>">
             Editar
         </a>
         </td>
+
         </td>
     </tr>
    

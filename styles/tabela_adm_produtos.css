@@ -1,0 +1,25 @@
+.tabela_produto_cadastrado{
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.tabela_butao_exclui{
+    background-color: red;
+    color: white;
+    padding: 5px 5px;
+    margin: 5px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.tabela_butao_editar{
+    background-color: rgb(89, 31, 224);
+    color: white;
+    padding: 5px 5px;
+    margin: 5px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+}
+

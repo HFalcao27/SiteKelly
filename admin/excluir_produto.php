@@ -1,5 +1,17 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['login_adm'])){
+
+    header('Location: login_adm.php');
+    exit;
+}
+
+?>
+
+<?php
+
 require_once '../backend/conexao.php';
 
 $id = $_GET['id'];
