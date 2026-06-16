@@ -17,3 +17,33 @@ setInterval(() => { //executa uma função repetidamente
     }, 300); // Fica na tela
 
 }, 3000);// troca a cada 3 segundos
+
+//Coração de favoritos
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hearts = document.querySelectorAll('.heart-icon');
+
+    hearts.forEach(heart => {
+      heart.addEventListener('click', () => {
+
+            const idProduto =
+            heart.dataset.produto;
+
+            fetch('./backend/toggle_favoritos.php', {
+              method: 'POST',
+                headers: {
+                    'Content-Type':
+                    'application/x-www-form-urlencoded'
+                },
+               body:
+                'id_produto=' + idProduto
+            })
+
+          .then(response => response.text())
+          .then(() => {
+                heart.classList.toggle('favorited');
+
+            });
+        });
+    });
+});

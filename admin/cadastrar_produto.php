@@ -63,9 +63,9 @@ if(!isset($_SESSION['login_adm'])){
         Cadastrar Produto
     </button>
 
-    <a href="../backend/logout.php">
-    <button class="cadastrar_produto_3" >Sair</button>
-    </a>
+    <a href="produtos.php" class="cadastrar_produto_3"> Produtos Cadastrados </a>
+
+    <a href="../admin/logout_adm.php" class="cadastrar_produto_4" >Sair</a> <!--Lembrar de logout primeiro envia para o backend para do diretorio ir para o logout--> 
 
     </form>
 </body>

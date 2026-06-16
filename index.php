@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require_once './backend/conexao.php';
 
 $sql = $pdo->prepare("
@@ -11,6 +12,23 @@ $sql = $pdo->prepare("
 $sql->execute();
 
 $produtos = $sql->fetchAll();
+
+$favoritos = [];
+
+if(isset($_SESSION['login'])){
+
+    $sqlFavoritos = $pdo->prepare("
+        SELECT id_produto
+        FROM favoritos
+        WHERE id_cliente = ?
+    ");
+
+    $sqlFavoritos->execute([
+        $_SESSION['login']
+    ]);
+
+    $favoritos = $sqlFavoritos->fetchAll(PDO::FETCH_COLUMN);
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +51,6 @@ $produtos = $sql->fetchAll();
 
 <header class="cabecalho">
     <div class="cabecalho_frases">
-    <!--<a>Frete Grátis a partir de R$350,00</a>-->
     <span id="frases">Frete Grátis a partir de R$350,00</span>
     </div>
 </header>
@@ -47,9 +64,21 @@ $produtos = $sql->fetchAll();
             <img src="assets/lupa.png" alt="ícone de buscar">
         </button>
     </div>
-        <a class="container__Menu__Link" href="login.php">Entre ou cadastre-se</a>
-        <img  href="" class="container__Menu__Link__sacola" src="./assets/sacola de compras.png"></a>
-        <a href="backend/logout.php" >
+
+    <?php if(isset($_SESSION['nome'])): ?>
+
+        <a class="container__Menu__Link"> Olá, <?= $_SESSION['nome']; ?></a>
+
+    <?php else: ?>
+
+        <a class="container__Menu__Link" href="login.php">Entre ou cadastre-se </a>
+
+    <?php endif; ?>
+
+        
+        <a href="favoritos.php"><img href="" class="container__Menu__Link__coracao" src="./assets/coracao_favorito.png"></a>
+        <a><img href="" class="container__Menu__Link__sacola" src="./assets/sacola de compras.png"></a>
+        <a href="backend/logout.php">
         <img class="container__botaologout" src="./assets/logout.png" alt="icone de logout"></a>
     </div>
     <div class="container__Procura">
@@ -65,31 +94,51 @@ $produtos = $sql->fetchAll();
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="./assets/fotos das roupas/vestido cor de pele.jpeg">
-                        <span class="heart-icon">&#10084;</span>
+                        <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span> <!--Isso é um codigo de coração-->
                         <p class="swiper__paragraph">Vestido longo com laço superior</p>
                         <p class="swiper__paragraph__valor">R$ 99,00</p>
                         <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                        <span class="carrinho_de_compras">&#128722;</span> <!--código de Carrinho de compras-->
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/fotos das roupas/vestido azul com detalhes preto.jpeg">
-                        <span class="heart-icon">&#10084;</span>
+                        <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                         <p class="swiper__paragraph">Vestido longo com laço superior</p>
                         <p class="swiper__paragraph__valor">R$ 99,00</p>
                         <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                        <span class="carrinho_de_compras">&#128722;</span> 
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/fotos das roupas/duas mulheres vestindo rosa.jpeg">
-                        <span class="heart-icon">&#10084;</span>
+                        <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                         <p class="swiper__paragraph">Vestido longo com laço superior</p>
                         <p class="swiper__paragraph__valor">R$ 99,00</p>
                         <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                        <span class="carrinho_de_compras">&#128722;</span> 
                         </div>
                     <div class="swiper-slide">
                         <img src="./assets/fotos das roupas//vestido cor de pele e manga preta.jpeg">
-                        <span class="heart-icon">&#10084;</span>
+                        <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                         <p class="swiper__paragraph">Vestido longo com laço superior</p>
                         <p class="swiper__paragraph__valor">R$ 99,00</p>
                         <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                        <span class="carrinho_de_compras">&#128722;</span> 
                         </div>
                     <div class="swiper-slide"></div>
 
@@ -105,52 +154,87 @@ $produtos = $sql->fetchAll();
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/vestido rosé.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
-                    <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>    
+                    <p class="swiper__paragraph__dividir">3x deR$ 33,30</p> 
+                    <span class="carrinho_de_compras">&#128722;</span>    
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/vestido rosa claro.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/vestido cor de pele.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/vestido bordô.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/vestido azul.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/vestido azul com detalhes preto.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/vestido cor de pele e manga preta.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide"></div>
 
@@ -167,51 +251,87 @@ $produtos = $sql->fetchAll();
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/blusa camisa longa calça cor de areia.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/blusa cinza com saia cinza escura.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/blusa com de terra saia branca.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/blusa preta com saia cinza.jpeg">
-                    <span class="heart-icon">&#10084;</span>
-                    <p class="swiper__paragraph">Vestido longo com laço superior</p>
-                    <p class="swiper__paragraph__valor">R$ 99,00</p>
-                    <p class="swiper__paragraph__dividir">3x deR$ 33,30</p></div>
-                <div class="swiper-slide">
-                    <img src="./assets/fotos das roupas/blusa rosa com calça cinza.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
+                </div>
+                <div class="swiper-slide">
+                    <img src="./assets/fotos das roupas/blusa rosa com calça cinza.jpeg">
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
+                    <p class="swiper__paragraph">Vestido longo com laço superior</p>
+                    <p class="swiper__paragraph__valor">R$ 99,00</p>
+                    <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/blusa rosa com saia cinza.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide">
                     <img src="./assets/fotos das roupas/blusa verdede mangas compridas.jpeg">
-                    <span class="heart-icon">&#10084;</span>
+                    <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
                     <p class="swiper__paragraph">Vestido longo com laço superior</p>
                     <p class="swiper__paragraph__valor">R$ 99,00</p>
                     <p class="swiper__paragraph__dividir">3x deR$ 33,30</p>
+                    <span class="carrinho_de_compras">&#128722;</span> 
                 </div>
                 <div class="swiper-slide"></div>
 
@@ -237,7 +357,11 @@ $produtos = $sql->fetchAll();
                             src="./assets/uploads_produtos/<?= $produto['produto_imagem']; ?>"
                             alt="<?= $produto['produto_nome']; ?>">
 
-                        <span class="heart-icon">&#10084;</span>
+                        <span
+    class="heart-icon <?= in_array($produto['id_produto'], $favoritos) ? 'favorited' : ''; ?>"
+    data-produto="<?= $produto['id_produto']; ?>">
+    &#10084;
+</span>
 
                         <p class="swiper__paragraph">
                             <?= $produto['produto_nome']; ?>
@@ -252,9 +376,7 @@ $produtos = $sql->fetchAll();
                             <?= number_format($produto['produto_valor'] / 3, 2, ',', '.'); ?>
                         </p>
 
-                        <p class="swiper__paragraph">
-                            <?= $produto['produto_descricao']; ?>
-                        </p>
+                        <span class="carrinho_de_compras">&#128722;</span>
 
                     </div>
 

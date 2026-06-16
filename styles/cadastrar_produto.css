@@ -29,11 +29,22 @@
 
 .cadastrar_produto_2{
     padding: 10px;
+    border-radius: 8px;
 }
 
 .cadastrar_produto_3{
     padding: 10px;
+    background-color: #f0f0f0;
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 10px 10px;
+}
+
+.cadastrar_produto_4{
+    padding: 10px;
     background-color: red;
     color: white;
-
+    border-radius: 8px;
+    text-decoration: none;
 }

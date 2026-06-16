@@ -41,7 +41,7 @@
     font-family: sans-serif ;
     font-weight: 100;
     font-size: 15px;
-    margin: 0 0 50px ;
+    margin: 0 0 10px ;
 }
 
 .swiper-pagination {
@@ -67,6 +67,25 @@
 
 .heart-icon.favorited {
   color: red;
+}
+
+.carrinho_de_compras{
+   position: flex;
+    top: 1px;
+    right: 110px;
+    font-size: 20px; /*Tamanho do carrinho*/
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.3s ease;
+    user-select: none; 
+}
+
+.carrinho_de_compras:hover{
+    transform: scale(1.1);
+}
+
+.carrinho_de_compras.adicionado{ /*depois no javascript adiciona o carrinho.classlist.toggle('adicionado')*/
+    color:gray;
 }
 
 /*Efeitos*/

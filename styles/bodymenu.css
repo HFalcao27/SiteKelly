@@ -59,6 +59,13 @@
     cursor: pointer;
 }
 
+.container__Menu__Link__coracao{
+    max-height:4vh;
+    cursor: pointer;
+    margin: 6px;
+    margin-top: 15px;
+}
+
 .container__Procura{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 700;

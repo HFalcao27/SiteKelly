@@ -3,7 +3,15 @@
 require_once 'backend/conexao.php';
 session_start();
 
-?>
+if(isset($_SESSION['erro'])): ?>
+
+    <p style="color:red;">
+        <?= $_SESSION['erro']; ?>
+    </p>
+
+    <?php unset($_SESSION['erro']); ?>
+
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -52,9 +60,9 @@ session_start();
         </div>
 
         <div class="div__cadastro__buttoes">
-            <button class="login_button" type="submit">Faça seu cadastro</button>            
-        <a href="index.php">
-            <button class="login_button" type="button">Login</button>
+            <button class="login_button" type="submit">Login</button>            
+        <a href="cadastrar.php">
+            <button class="login_button" type="button">Faça o seu cadastro</button>
         </a>     
         </div> 
         </form>

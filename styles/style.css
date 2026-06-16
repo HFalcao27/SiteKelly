@@ -6,6 +6,7 @@
 @import url("./login.css");
 @import url("./cadastrar_produto.css");
 @import url("./tabela_adm_produtos.css");
+@import url("./favoritos.css");
 
 *{
     margin: 0;
