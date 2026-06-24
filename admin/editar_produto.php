@@ -22,13 +22,26 @@ $sql->execute([$id]);
 
 $produto = $sql->fetch();
 
+/*Ficar atento com relação a isso se vai funcionar para salvar */
+
+$sqlCarrossel = $pdo->prepare("
+    SELECT id_carrossel
+    FROM produto_carrossel
+    WHERE id_produto = ?
+");
+
+$sqlCarrossel->execute([$id]);
+
+$carrosseisSelecionados =
+    $sqlCarrossel->fetchAll(PDO::FETCH_COLUMN);
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-       <title>Cadastrar Produto</title>
+       <title>Editar Produtos</title>
        <meta charset="UTF-8">
        <meta charset="UTF-8">
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,15 +99,41 @@ $produto = $sql->fetch();
        <br><br>
 
        <label>Descrição</label>
-
        <textarea name="produto_descricao"><?= $produto['produto_descricao']; ?></textarea>
 
        <br><br>
        </div>
 
+       <div class="cadastrar_produto_1">
+       <label>Categoria:</label>
+       <input type="text"
+              name="produto_categoria"
+              value="<?= $produto['produto_categoria']; ?>">
+
+       <br><br>
+
+       <label>Exibir em:</label><br> <!--Isso aqui está vinculado com categoria para poder saber em qual carrossel vai aparecer-->
+
+        <input type="checkbox" name="carrossel[]" value="1" <?= in_array(1,$carrosseisSelecionados) ? 'checked' : ''; ?> >
+        Lançamentos
+
+        <br>
+
+        <input type="checkbox" name="carrossel[]" value="2" <?= in_array(2,$carrosseisSelecionados) ? 'checked' : ''; ?>>
+        Promoções
+
+        <br>
+
+        <input type="checkbox" name="carrossel[]" value="3"  <?= in_array(3,$carrosseisSelecionados) ? 'checked' : ''; ?>>
+        Destaques
+
+        <br><br>
+
+       </div>
+
        <button class="cadastrar_produto_2"
-              type="submit">
-              Salvar Alterações
+       type="submit">
+       Salvar Alterações
        </button>
 
        </form>

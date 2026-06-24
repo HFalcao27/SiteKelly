@@ -55,10 +55,33 @@ if(!isset($_SESSION['login_adm'])){
     <br><br>
     </div>
 
-    <label>Imagem:</label><br>
-    <input type="file" name="produto_imagem">
+    <div class="cadastrar_produto_1">
+    <label>Categoria:</label><br>
+    <input type="text" name="produto_categoria" required>
     <br><br>
 
+    <label>Carrosseis:</label><br> <!--Isso aqui está vinculado com carrosseis para poder saber em qual carrossel vai aparecer-->
+
+        <input type="checkbox" name="carrossel[]" value="1">
+        Lançamentos
+
+        <br>
+
+        <input type="checkbox" name="carrossel[]" value="2">
+        Promoções
+
+        <br>
+
+        <input type="checkbox" name="carrossel[]" value="3">
+        Destaques
+
+        <br><br>
+
+    </div>
+    <label>Imagem:</label><br>
+        <input type="file" name="produto_imagem">
+        <br><br>
+        
     <button class="cadastrar_produto_2" type="submit">
         Cadastrar Produto
     </button>

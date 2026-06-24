@@ -7,6 +7,7 @@
 @import url("./cadastrar_produto.css");
 @import url("./tabela_adm_produtos.css");
 @import url("./favoritos.css");
+@import url("./carrinho.css");
 
 *{
     margin: 0;

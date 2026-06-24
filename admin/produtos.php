@@ -38,6 +38,7 @@ $produtos = $sql->fetchAll();
         <th>Valor</th>
         <th>Tamanho</th>
         <th>Quantidade</th>
+        <th>Categoria</th>
         <th>Imagem</th>
         <th>Excluir</th>
         <th>Editar</th>
@@ -53,7 +54,7 @@ $produtos = $sql->fetchAll();
         <td class="tabela_produto_cadastrado">R$ <?= $produto['produto_valor']; ?></td>
         <td class="tabela_produto_cadastrado"><?= $produto['produto_tamanho']; ?></td>
         <td class="tabela_produto_cadastrado"><?= $produto['produto_quantidade']; ?></td>
-
+        <td class="tabela_produto_cadastrado"><?= $produto['produto_categoria']; ?></td>
         <td>
         <img
             src="../assets/uploads_produtos/<?= $produto['produto_imagem']; ?>"

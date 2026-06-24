@@ -84,8 +84,8 @@
     transform: scale(1.1);
 }
 
-.carrinho_de_compras.adicionado{ /*depois no javascript adiciona o carrinho.classlist.toggle('adicionado')*/
-    color:gray;
+.carrinho_de_compras.ativo{ 
+    color:greenyellow !important; /*depois no javascript adiciona o carrinho.classlist.toggle('adicionado')*/
 }
 
 /*Efeitos*/

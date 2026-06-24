@@ -11,13 +11,9 @@
     padding: 0% 1% 0% 0%;
 }
 
-.container__Menu__search {
-    color: #030e13;
-    border-radius: 5px;
-    border: none;
-    background-color: #c8d4da;
+.container__Menu__search{
     width: 30vh;
-    padding: 0.9vh 14vh 0.9vh 2vh;
+    padding: 10px 40px 10px 10px;
 }
 
 .container__botaologout{
@@ -41,18 +37,49 @@
     padding: 0% 1% 0% 1%;
 }
 
-.container__Menu__lupa {
-    position: flex;
+.container__search-wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.container__Menu__lupa{
+    position: absolute;
+    right: 10px;
     top: 50%;
-    right: 670px; 
-    transform: translateY(-986%);
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
     cursor: pointer;
 }
 
-.container__Menu__lupa img {
-    width: 3vh;
-    height: 3vh;
-    }
+.container__Menu__lupa img{
+    width: 18px;
+    height: 18px;
+}
+
+#resultadoPesquisa{
+    position: absolute;
+    top: 100%;      /* fica logo abaixo do input */
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.resultado-item{
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.resultado-item:hover{
+    background-color: #f5f5f5;
+}
 
 .container__Menu__Link__sacola{
     max-height:6vh;

@@ -2,7 +2,8 @@ const frases = document.getElementById('frases');
 
 const textos = [ //Foi criado um array com os textos 0,1
     "Frete Grátis a partir de R$350,00",
-    "Cadastre-se e aproveite as promoções"
+    "Continue Comprando Para Ganhar Descontos",
+    "Não perca tempo, garanta os seus descontos"
 ];
 
 let indice = 0; // Esse 0 mostra qual a frase vai começar
@@ -48,7 +49,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-//Essa parte de baixo é para função de pesquisa
+//Remover dos favoritos
+
+document.querySelectorAll('.buton__favoritos__excluir')
+.forEach(botao => {
+
+    botao.addEventListener('click', () => {
+
+        const idProduto = botao.dataset.produto;
+
+        fetch('./backend/removerFavorito.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `id_produto=${idProduto}`
+        })
+        .then(() => {
+            location.reload();
+        });
+
+    });
+
+});
+
+//Sobre pesquisa
 
 const input = document.getElementById('searchInput');
 
@@ -56,7 +81,7 @@ input.addEventListener('keyup', () => {
 
     let busca = input.value;
 
-    fetch(`backend/pesquisar.php?busca=${busca}`)
+    fetch(`backend/pesquisarfavorito.php?busca=${busca}`)
         .then(response => response.text())
         .then(resultado => {
 
@@ -92,7 +117,7 @@ input.addEventListener('keyup', () => { //Serve para quando clicar em qualquer l
         return;
     }
 
-    fetch(`backend/pesquisar.php?busca=${encodeURIComponent(busca)}`)
+    fetch(`backend/pesquisarfavorito.php?busca=${encodeURIComponent(busca)}`)
         .then(response => response.text())
         .then(resultado => {
             document.getElementById('resultadoPesquisa').innerHTML = resultado;
@@ -100,33 +125,38 @@ input.addEventListener('keyup', () => { //Serve para quando clicar em qualquer l
 
 });
 
-//Aqui para baixo é sobre o carrinho de compras
 
-document.querySelectorAll('.carrinho_de_compras')
+//Para adiconar ao carrinho
+
+document.querySelectorAll('.buton__favoritos')
 .forEach(botao => {
 
     botao.addEventListener('click', () => {
 
-        const produto = botao.dataset.produto;
+        const idProduto = botao.dataset.produto;
 
-        fetch('backend/adicionar_carrinho.php', {
+        fetch('./backend/adicionar_carrinho.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: 'id_produto=' + produto
+            body: `id_produto=${idProduto}`
         })
-        .then(r => r.text())
-        .then(res => {
+        .then(response => response.text())
+        .then(retorno => {
 
-            if (res === 'adicionado') {
-                botao.classList.add('ativo');
-                botao.innerHTML = '🛒✔';
+            if(retorno === 'adicionado'){
+
+                botao.innerHTML =
+                    'Adicionado ao Carrinho ✅';
+
             }
 
-            if (res === 'removido') {
-                botao.classList.remove('ativo');
-                botao.innerHTML = '🛒';
+            if(retorno === 'removido'){
+
+                botao.innerHTML =
+                    'Adicionar ao Carrinho 🛒';
+
             }
 
         });

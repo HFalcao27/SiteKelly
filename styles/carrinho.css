@@ -1,0 +1,33 @@
+.favoritos__botoes__secundarios__carrinho{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: column;
+    margin: 20px 130px;
+    gap: 20px;
+    background: #aeeb90;
+    border-radius: 12px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.28);
+    padding: 20px 5px;
+}
+
+.carrinho__valor_total{
+    font-size: 2rem;
+    color: #0c161a;
+    margin-bottom: 20px;
+}
+
+.carrinho__acoes{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.carrinho__acoes a{
+    width: 280px;
+}
+
+.carrinho__acoes button{
+    width: 100%;
+}
