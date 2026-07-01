@@ -1,0 +1,190 @@
+/* ===========================
+   CHECKOUT
+=========================== */
+
+.checkout{
+    width: 90%;
+    max-width: 1350px;
+    margin: 50px auto;
+}
+
+.checkout form{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+/* ===========================
+   COLUNA ESQUERDA
+=========================== */
+
+.checkout__esquerda{
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+
+.checkout__esquerda h2{
+    margin-bottom: 30px;
+    color: #0c161a;
+    font-size: 28px;
+}
+
+/* ===========================
+   COLUNA DIREITA
+=========================== */
+
+.checkout__direita{
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    position: sticky;
+    top: 25px;
+}
+
+.checkout__direita h2{
+    margin-bottom: 20px;
+    color: #0c161a;
+    font-size: 24px;
+}
+
+/* ===========================
+   CAMPOS
+=========================== */
+
+.checkout__grupo{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.checkout__grupo label{
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.checkout__grupo input,
+.checkout__grupo textarea{
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    transition: .3s;
+    box-sizing: border-box;
+}
+
+.checkout__grupo textarea{
+    resize: vertical;
+    min-height: 120px;
+}
+
+.checkout__grupo input:focus,
+.checkout__grupo textarea:focus{
+    border-color: #899AA1;
+}
+
+/* ===========================
+   PAGAMENTO
+=========================== */
+
+.checkout__pagamento{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.checkout__pagamento label{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.checkout__pagamento input[type="radio"]{
+    transform: scale(1.2);
+}
+
+/* ===========================
+   RESUMO
+=========================== */
+
+.checkout__produto{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+.checkout__produto span:last-child,
+.checkout__produto strong:last-child{
+    white-space: nowrap;
+}
+
+/* ===========================
+   DIVISÓRIA
+=========================== */
+
+.checkout hr{
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 25px 0;
+}
+
+/* ===========================
+   BOTÃO
+=========================== */
+
+.checkout__botao{
+    width: 100%;
+    margin-top: 25px;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #899AA1;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.checkout__botao:hover{
+    background:#899AA1;
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width: 900px){
+
+    .checkout form{
+        grid-template-columns: 1fr;
+    }
+
+    .checkout__direita{
+        position: static;
+    }
+
+    .checkout{
+        width: 95%;
+    }
+
+    .checkout__esquerda,
+    .checkout__direita{
+        padding: 25px;
+    }
+}

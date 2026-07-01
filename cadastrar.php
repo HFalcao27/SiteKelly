@@ -59,11 +59,11 @@ $clientes = $sql->fetchAll();
         </div>
         <div class="div__cadastro">
             <label for="exampleInputEmail1">Telefone: </label>
-            <input name="telefone" type="number" placeholder="90000-0000">  
+            <input name="telefone" type="text" placeholder="90000-0000">  
         </div>
         <div class="div__cadastro">
             <label for="exampleInputEmail1">Cpf: </label>
-            <input name="cpf" type="number" placeholder="123.456.789-10">  
+            <input name="cpf" type="text" placeholder="123.456.789-10">  
         </div>
 
         <div class="div__cadastro">
@@ -73,7 +73,7 @@ $clientes = $sql->fetchAll();
 
         <div class="div__cadastro">
             <label for="exampleInputEmail1">Cep: </label>
-            <input name="cep" type="number" placeholder="0000000-000">  
+            <input name="cep" type="text" placeholder="0000000-000">  
         </div>
 
         <div class="div__cadastro">
